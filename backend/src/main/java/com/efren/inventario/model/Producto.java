@@ -4,34 +4,30 @@ import jakarta.persistence.*;
 
 @Entity
 @Table(name = "productos")
-
 public class Producto {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
     private String nombre;
+
+    private String descripcion;
+
     private double precio;
-    private int cantidad;
+
     private String departamento;
-    @ManyToOne
-    @JoinColumn(name = "almacen_id")
-    private Almacen almacen;
 
     public Producto() {
-
     }
 
-    public Producto(String nombre, double precio, int cantidad, Almacen almacen, String departamento) {
-
+    public Producto(String nombre, String descripcion, double precio, String departamento) {
         this.nombre = nombre;
+        this.descripcion = descripcion;
         this.precio = precio;
-        this.cantidad = cantidad;
         this.departamento = departamento;
-        this.almacen = almacen;
-
     }
 
-    // Getters and Setters
     public Long getId() {
         return id;
     }
@@ -44,6 +40,14 @@ public class Producto {
         this.nombre = nombre;
     }
 
+    public String getDescripcion() {
+        return descripcion;
+    }
+
+    public void setDescripcion(String descripcion) {
+        this.descripcion = descripcion;
+    }
+
     public double getPrecio() {
         return precio;
     }
@@ -52,28 +56,12 @@ public class Producto {
         this.precio = precio;
     }
 
-    public int getCantidad() {
-        return cantidad;
-    }
-
-    public void setCantidad(int cantidad) {
-        this.cantidad = cantidad;
-    }
-
     public String getDepartamento() {
         return departamento;
     }
 
     public void setDepartamento(String departamento) {
         this.departamento = departamento;
-
-    }
-
-    public Almacen getAlmacen() {
-        return almacen;
-    }
-
-    public void setAlmacen(Almacen almacen) {
-        this.almacen = almacen;
     }
 }
+

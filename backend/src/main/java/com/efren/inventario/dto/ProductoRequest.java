@@ -1,31 +1,28 @@
 package com.efren.inventario.dto;
 
 import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Positive;
-import jakarta.validation.constraints.PositiveOrZero;
 
 public class ProductoRequest {
-    @NotBlank(message = "Colocar nombre es obligatorio")
+
+    @NotBlank(message = "El nombre es obligatorio")
     private String nombre;
+
+    private String descripcion;
+
     @Positive(message = "El precio debe ser mayor a 0")
     private double precio;
-    @PositiveOrZero(message = "La cantidad debe ser mayor o igual a 0")
-    private int cantidad;
-    @NotNull(message = "El almacen es obligatorio")
-    private Long almacenId;
+
     @NotBlank(message = "El departamento es obligatorio")
     private String departamento;
 
     public ProductoRequest() {
-
     }
 
-    public ProductoRequest(String nombre, double precio, int cantidad, Long almacenId, String departamento) {
+    public ProductoRequest(String nombre, String descripcion, double precio, String departamento) {
         this.nombre = nombre;
+        this.descripcion = descripcion;
         this.precio = precio;
-        this.cantidad = cantidad;
-        this.almacenId = almacenId;
         this.departamento = departamento;
     }
 
@@ -37,28 +34,20 @@ public class ProductoRequest {
         this.nombre = nombre;
     }
 
+    public String getDescripcion() {
+        return descripcion;
+    }
+
+    public void setDescripcion(String descripcion) {
+        this.descripcion = descripcion;
+    }
+
     public double getPrecio() {
         return precio;
     }
 
     public void setPrecio(double precio) {
         this.precio = precio;
-    }
-
-    public int getCantidad() {
-        return cantidad;
-    }
-
-    public void setCantidad(int cantidad) {
-        this.cantidad = cantidad;
-    }
-
-    public Long getAlmacenId() {
-        return almacenId;
-    }
-
-    public void setAlmacenId(Long almacenId) {
-        this.almacenId = almacenId;
     }
 
     public String getDepartamento() {
@@ -68,5 +57,5 @@ public class ProductoRequest {
     public void setDepartamento(String departamento) {
         this.departamento = departamento;
     }
-
 }
+

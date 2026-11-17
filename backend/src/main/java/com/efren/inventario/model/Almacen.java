@@ -1,35 +1,56 @@
 package com.efren.inventario.model;
 
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
-import jakarta.persistence.Entity;
+import jakarta.persistence.*;
 
 @Entity
 @Table(name = "almacenes")
-
 public class Almacen {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private String nombreAlmacen;
-    
-    public Almacen() {
-        
-    }
-    public Almacen(String nombreAlmacen){
-        this.nombreAlmacen = nombreAlmacen;
 
+    private String nombre;
+
+    private String ubicacion;
+
+    private String descripcion;
+
+    public Almacen() {
     }
-    public Long getId(){
+
+    public Almacen(String nombre, String ubicacion, String descripcion) {
+        this.nombre = nombre;
+        this.ubicacion = ubicacion;
+        this.descripcion = descripcion;
+    }
+
+    public Long getId() {
         return id;
     }
-    public String getNombreAlmacen(){
-        return nombreAlmacen;
-    }
-    public void setNombreAlmacen(String nombreAlmacen){
-        this.nombreAlmacen = nombreAlmacen;
-    }   
 
+    public String getNombre() {
+        return nombre;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
+    public String getUbicacion() {
+        return ubicacion;
+    }
+
+    public void setUbicacion(String ubicacion) {
+        this.ubicacion = ubicacion;
+    }
+
+    public String getDescripcion() {
+        return descripcion;
+    }
+
+    public void setDescripcion(String descripcion) {
+        this.descripcion = descripcion;
+    }
 }
+
