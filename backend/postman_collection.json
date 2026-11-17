@@ -1,0 +1,308 @@
+{
+	"info": {
+		"_postman_id": "inventario-api-collection",
+		"name": "Inventario API - Spring Boot",
+		"description": "Colección completa para probar el nuevo modelo de Inventario (Almacenes, Productos, Movimientos y Existencias).",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "1. Almacenes",
+			"item": [
+				{
+					"name": "Crear Almacén 1 (Hermosillo)",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"nombre\": \"Almacén Central Hermosillo\",\n  \"ubicacion\": \"Parque Industrial Hermosillo\",\n  \"descripcion\": \"Bodega principal y distribución regional\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/almacenes",
+							"protocol": "http",
+							"host": ["localhost"],
+							"port": "8080",
+							"path": ["api", "almacenes"]
+						}
+					}
+				},
+				{
+					"name": "Crear Almacén 2 (Nogales)",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"nombre\": \"Almacén Frontera Nogales\",\n  \"ubicacion\": \"Nogales Sonora\",\n  \"descripcion\": \"Sucursal norte y punto de importación\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/almacenes",
+							"protocol": "http",
+							"host": ["localhost"],
+							"port": "8080",
+							"path": ["api", "almacenes"]
+						}
+					}
+				},
+				{
+					"name": "Listar todos los Almacenes",
+					"request": {
+						"method": "GET",
+						"url": {
+							"raw": "http://localhost:8080/api/almacenes",
+							"protocol": "http",
+							"host": ["localhost"],
+							"port": "8080",
+							"path": ["api", "almacenes"]
+						}
+					}
+				},
+				{
+					"name": "Obtener Almacén por ID",
+					"request": {
+						"method": "GET",
+						"url": {
+							"raw": "http://localhost:8080/api/almacenes/1",
+							"protocol": "http",
+							"host": ["localhost"],
+							"port": "8080",
+							"path": ["api", "almacenes", "1"]
+						}
+					}
+				}
+			]
+		},
+		{
+			"name": "2. Productos",
+			"item": [
+				{
+					"name": "Crear Producto",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"nombre\": \"Laptop Lenovo ThinkPad\",\n  \"descripcion\": \"Intel Core i7 16GB SSD 512GB\",\n  \"precio\": 17500.50,\n  \"departamento\": \"Tecnología\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/productos",
+							"protocol": "http",
+							"host": ["localhost"],
+							"port": "8080",
+							"path": ["api", "productos"]
+						}
+					}
+				},
+				{
+					"name": "Listar Productos",
+					"request": {
+						"method": "GET",
+						"url": {
+							"raw": "http://localhost:8080/api/productos",
+							"protocol": "http",
+							"host": ["localhost"],
+							"port": "8080",
+							"path": ["api", "productos"]
+						}
+					}
+				},
+				{
+					"name": "Obtener Producto por ID",
+					"request": {
+						"method": "GET",
+						"url": {
+							"raw": "http://localhost:8080/api/productos/1",
+							"protocol": "http",
+							"host": ["localhost"],
+							"port": "8080",
+							"path": ["api", "productos", "1"]
+						}
+					}
+				}
+			]
+		},
+		{
+			"name": "3. Movimientos (Operaciones)",
+			"item": [
+				{
+					"name": "Registrar ENTRADA (a Almacén 1)",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"productoId\": 1,\n  \"tipo\": \"ENTRADA\",\n  \"cantidad\": 20,\n  \"almacenDestinoId\": 1,\n  \"observaciones\": \"Recepción inicial de lote\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/movimientos",
+							"protocol": "http",
+							"host": ["localhost"],
+							"port": "8080",
+							"path": ["api", "movimientos"]
+						}
+					}
+				},
+				{
+					"name": "Registrar TRANSFERENCIA (de Almacén 1 a Almacén 2)",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"productoId\": 1,\n  \"tipo\": \"TRANSFERENCIA\",\n  \"cantidad\": 5,\n  \"almacenOrigenId\": 1,\n  \"almacenDestinoId\": 2,\n  \"observaciones\": \"Traspaso para surtir sucursal Nogales\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/movimientos",
+							"protocol": "http",
+							"host": ["localhost"],
+							"port": "8080",
+							"path": ["api", "movimientos"]
+						}
+					}
+				},
+				{
+					"name": "Registrar SALIDA (de Almacén 1)",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"productoId\": 1,\n  \"tipo\": \"SALIDA\",\n  \"cantidad\": 3,\n  \"almacenOrigenId\": 1,\n  \"observaciones\": \"Venta directa a cliente corporativo\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/movimientos",
+							"protocol": "http",
+							"host": ["localhost"],
+							"port": "8080",
+							"path": ["api", "movimientos"]
+						}
+					}
+				},
+				{
+					"name": "Test Error: SALIDA con Stock Insuficiente",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"productoId\": 1,\n  \"tipo\": \"SALIDA\",\n  \"cantidad\": 9999,\n  \"almacenOrigenId\": 1,\n  \"observaciones\": \"Intento de salida excesiva\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/movimientos",
+							"protocol": "http",
+							"host": ["localhost"],
+							"port": "8080",
+							"path": ["api", "movimientos"]
+						}
+					}
+				},
+				{
+					"name": "Listar todos los Movimientos",
+					"request": {
+						"method": "GET",
+						"url": {
+							"raw": "http://localhost:8080/api/movimientos",
+							"protocol": "http",
+							"host": ["localhost"],
+							"port": "8080",
+							"path": ["api", "movimientos"]
+						}
+					}
+				},
+				{
+					"name": "Listar Movimientos por Producto",
+					"request": {
+						"method": "GET",
+						"url": {
+							"raw": "http://localhost:8080/api/movimientos/producto/1",
+							"protocol": "http",
+							"host": ["localhost"],
+							"port": "8080",
+							"path": ["api", "movimientos", "producto", "1"]
+						}
+					}
+				}
+			]
+		},
+		{
+			"name": "4. Existencias",
+			"item": [
+				{
+					"name": "Listar todas las Existencias",
+					"request": {
+						"method": "GET",
+						"url": {
+							"raw": "http://localhost:8080/api/existencias",
+							"protocol": "http",
+							"host": ["localhost"],
+							"port": "8080",
+							"path": ["api", "existencias"]
+						}
+					}
+				},
+				{
+					"name": "Existencias por Producto",
+					"request": {
+						"method": "GET",
+						"url": {
+							"raw": "http://localhost:8080/api/existencias/producto/1",
+							"protocol": "http",
+							"host": ["localhost"],
+							"port": "8080",
+							"path": ["api", "existencias", "producto", "1"]
+						}
+					}
+				},
+				{
+					"name": "Existencias por Almacén",
+					"request": {
+						"method": "GET",
+						"url": {
+							"raw": "http://localhost:8080/api/existencias/almacen/1",
+							"protocol": "http",
+							"host": ["localhost"],
+							"port": "8080",
+							"path": ["api", "existencias", "almacen", "1"]
+						}
+					}
+				}
+			]
+		}
+	]
+}
