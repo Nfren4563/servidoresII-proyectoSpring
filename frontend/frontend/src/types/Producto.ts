@@ -1,13 +1,14 @@
-export interface Almacen {
-    id: number;
-    nombreAlmacen: string;
+export interface Producto {
+  id: number;
+  nombre: string;
+  descripcion?: string;
+  precio: number;
+  departamento: string;
 }
 
-export interface Producto {
-    id: number;
-    nombre: string;
-    cantidad: number;
-    precio: number;
-    departamento: string;
-    almacen: Almacen;
+export interface ProductoRequest {
+  nombre: string;
+  descripcion?: string;
+  precio: number;
+  departamento: string;
 }

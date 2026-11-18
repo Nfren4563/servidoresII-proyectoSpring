@@ -25,6 +25,7 @@ PLAN.md
 # ============================================
 backend/target/
 backend/*.db
+*.db
 backend/.mvn/wrapper/maven-wrapper.jar
 backend/HELP.md
 
