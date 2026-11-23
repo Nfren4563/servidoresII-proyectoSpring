@@ -2,7 +2,6 @@
   --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
   --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace;
 
-  /* Paleta Neutra y Profesional (Estilo Obsidian / Zinc) */
   --bg-canvas: #f9fafb;
   --bg-surface: #ffffff;
   --bg-surface-subtle: #f4f4f5;
@@ -16,7 +15,6 @@
   --text-muted: #71717a;
   --text-faint: #a1a1aa;
 
-  /* Acento Neutro Sólido */
   --primary: #18181b;
   --primary-hover: #27272a;
   --primary-contrast: #ffffff;
@@ -25,7 +23,6 @@
   --secondary-hover: #e4e4e7;
   --secondary-text: #18181b;
 
-  /* Estados semánticos sutiles */
   --badge-in-bg: #ecfdf5;
   --badge-in-text: #065f46;
   --badge-in-border: #a7f3d0;

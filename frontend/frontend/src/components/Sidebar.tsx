@@ -69,7 +69,6 @@ export function Sidebar({ activeTab, onTabChange, conteos }: SidebarProps) {
 
   return (
     <aside className="app-sidebar">
-      {/* Brand Header */}
       <div className="sidebar-brand-box">
         <div className="brand-mark">
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round">
@@ -80,12 +79,11 @@ export function Sidebar({ activeTab, onTabChange, conteos }: SidebarProps) {
           </svg>
         </div>
         <div className="brand-copy">
-          <span className="brand-name">Inventario</span>
+          <span className="brand-name">Wong Industries</span>
           <span className="brand-badge">Sistema</span>
         </div>
       </div>
 
-      {/* Nav Section */}
       <div className="sidebar-section-title">MÓDULOS DEL SISTEMA</div>
       <nav className="sidebar-menu">
         {navItems.map((item) => {
@@ -105,11 +103,10 @@ export function Sidebar({ activeTab, onTabChange, conteos }: SidebarProps) {
         })}
       </nav>
 
-      {/* Footer Info */}
       <div className="sidebar-footer">
         <div className="system-status">
           <span className="status-indicator"></span>
-          <span className="status-label">Backend Spring Boot activo</span>
+          <span className="status-label">Backend conectado</span>
         </div>
       </div>
     </aside>

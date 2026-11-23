@@ -44,7 +44,6 @@ export function ProductoTable({
 
   return (
     <div className="card-panel">
-      {/* Header Toolbar */}
       <div className="panel-toolbar">
         <div className="toolbar-search-group">
           <div className="input-search-wrapper">
@@ -84,7 +83,6 @@ export function ProductoTable({
         </button>
       </div>
 
-      {/* Table Data */}
       {productosFiltrados.length === 0 ? (
         <div className="panel-empty-state">
           <p className="empty-title">No hay productos que coincidan con la búsqueda</p>
@@ -179,7 +177,6 @@ export function ProductoTable({
                       </td>
                     </tr>
 
-                    {/* Sub-tabla de existencias por almacén */}
                     {isExpanded && (
                       <tr key={`expand-${producto.id}`} className="row-detail-container">
                         <td colSpan={7}>

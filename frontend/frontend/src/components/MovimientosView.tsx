@@ -21,7 +21,6 @@ export function MovimientosView({
   const [modalAbierto, setModalAbierto] = useState(false);
   const [tipoFiltro, setTipoFiltro] = useState("TODOS");
 
-  // Form states
   const [tipo, setTipo] = useState<TipoMovimiento>("ENTRADA");
   const [productoId, setProductoId] = useState<number | "">("");
   const [cantidad, setCantidad] = useState<number | "">("");
@@ -101,7 +100,6 @@ export function MovimientosView({
 
   return (
     <div className="card-panel">
-      {/* Header Toolbar */}
       <div className="panel-toolbar">
         <div className="toolbar-search-group">
           <div className="select-wrapper">
@@ -205,7 +203,6 @@ export function MovimientosView({
         </div>
       )}
 
-      {/* Modal Registrar Movimiento */}
       {modalAbierto && (
         <div className="modal-overlay">
           <div className="modal-dialog">

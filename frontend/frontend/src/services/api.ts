@@ -3,7 +3,7 @@ import type { Almacen, AlmacenRequest } from "../types/Almacen";
 import type { Existencia } from "../types/Existencia";
 import type { Movimiento, MovimientoRequest } from "../types/Movimiento";
 
-const API_BASE_URL = "http://localhost:8080/api";
+const API_BASE_URL = import.meta.env.VITE_API_URL || (import.meta.env.PROD ? "/api" : "http://localhost:8080/api");
 
 async function request<T>(endpoint: string, options?: RequestInit): Promise<T> {
   const url = `${API_BASE_URL}${endpoint}`;
@@ -25,12 +25,10 @@ async function request<T>(endpoint: string, options?: RequestInit): Promise<T> {
         errorDetail = Object.values(data.errores).join(", ");
       }
     } catch {
-      // Si la respuesta no es JSON, mantenemos el status HTTP
     }
     throw new Error(errorDetail);
   }
 
-  // Si la respuesta no tiene cuerpo (ej. DELETE 204 o void)
   const contentType = response.headers.get("content-type");
   if (!contentType || !contentType.includes("application/json")) {
     return {} as T;
@@ -39,7 +37,6 @@ async function request<T>(endpoint: string, options?: RequestInit): Promise<T> {
   return response.json();
 }
 
-// 📦 API Productos
 export const productosApi = {
   getAll: () => request<Producto[]>("/productos"),
   getById: (id: number) => request<Producto>(`/productos/${id}`),
@@ -59,7 +56,6 @@ export const productosApi = {
     }),
 };
 
-// 🏢 API Almacenes
 export const almacenesApi = {
   getAll: () => request<Almacen[]>("/almacenes"),
   getById: (id: number) => request<Almacen>(`/almacenes/${id}`),
@@ -79,7 +75,6 @@ export const almacenesApi = {
     }),
 };
 
-// 📊 API Existencias
 export const existenciasApi = {
   getAll: () => request<Existencia[]>("/existencias"),
   getByProducto: (productoId: number) =>
@@ -88,7 +83,6 @@ export const existenciasApi = {
     request<Existencia[]>(`/existencias/almacen/${almacenId}`),
 };
 
-// 🔄 API Movimientos
 export const movimientosApi = {
   getAll: () => request<Movimiento[]>("/movimientos"),
   getByProducto: (productoId: number) =>

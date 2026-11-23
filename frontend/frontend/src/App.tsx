@@ -17,17 +17,14 @@ import "./App.css";
 export function App() {
   const [activeTab, setActiveTab] = useState<TabType>("productos");
 
-  // Datos principales
   const [productos, setProductos] = useState<Producto[]>([]);
   const [almacenes, setAlmacenes] = useState<Almacen[]>([]);
   const [existencias, setExistencias] = useState<Existencia[]>([]);
   const [movimientos, setMovimientos] = useState<Movimiento[]>([]);
 
-  // Estados de carga y error
   const [cargando, setCargando] = useState(false);
   const [errorGlobal, setErrorGlobal] = useState<string | null>(null);
 
-  // Modales
   const [modalProductoAbierto, setModalProductoAbierto] = useState(false);
   const [productoParaEditar, setProductoParaEditar] = useState<Producto | null>(null);
 
@@ -63,7 +60,6 @@ export function App() {
     cargarDatos();
   }, []);
 
-  // Handlers para Productos
   const handleGuardarProducto = async (datos: ProductoRequest, id?: number) => {
     if (id) {
       await productosApi.update(id, datos);
@@ -82,7 +78,6 @@ export function App() {
     }
   };
 
-  // Handlers para Almacenes
   const handleGuardarAlmacen = async (datos: AlmacenRequest, id?: number) => {
     if (id) {
       await almacenesApi.update(id, datos);
@@ -101,7 +96,6 @@ export function App() {
     }
   };
 
-  // Handler para Movimientos
   const handleRegistrarMovimiento = async (req: MovimientoRequest) => {
     await movimientosApi.create(req);
     await cargarDatos();
@@ -128,7 +122,6 @@ export function App() {
 
   return (
     <div className="app-container-layout">
-      {/* 1. SIDEBAR LATERAL */}
       <Sidebar
         activeTab={activeTab}
         onTabChange={setActiveTab}
@@ -140,9 +133,7 @@ export function App() {
         }}
       />
 
-      {/* 2. ÁREA DE TRABAJO PRINCIPAL */}
       <main className="main-workspace">
-        {/* Cabecera del Módulo */}
         <header className="workspace-header">
           <div className="header-title-group">
             <h1>{titulosTab[activeTab].titulo}</h1>
@@ -177,7 +168,6 @@ export function App() {
           </div>
         </header>
 
-        {/* Contenido Dinámico */}
         <div className="workspace-content">
           {errorGlobal && (
             <div className="alert-toast-error">
@@ -243,7 +233,6 @@ export function App() {
         </div>
       </main>
 
-      {/* MODALES */}
       <ProductoModal
         isOpen={modalProductoAbierto}
         productoParaEditar={productoParaEditar}

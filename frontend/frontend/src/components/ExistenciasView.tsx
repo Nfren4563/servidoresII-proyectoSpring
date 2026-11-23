@@ -37,7 +37,6 @@ export function ExistenciasView({
 
   return (
     <div className="view-stack">
-      {/* Metric Counters (Reales del sistema) */}
       <div className="metrics-row-neutral">
         <div className="metric-box-neutral">
           <span className="metric-sublabel">Total de Unidades en Stock</span>
@@ -59,7 +58,6 @@ export function ExistenciasView({
       </div>
 
       <div className="card-panel">
-        {/* Toolbar */}
         <div className="panel-toolbar">
           <div className="toolbar-search-group">
             <div className="input-search-wrapper">
@@ -91,7 +89,6 @@ export function ExistenciasView({
           </div>
         </div>
 
-        {/* Table */}
         {existenciasFiltradas.length === 0 ? (
           <div className="panel-empty-state">
             <p className="empty-title">Sin existencias registradas</p>

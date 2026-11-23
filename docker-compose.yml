@@ -1,0 +1,60 @@
+services:
+  db:
+    image: postgres:17-alpine
+    container_name: inventario-db
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: ${DB_NAME:-inventario_db}
+      POSTGRES_USER: ${DB_USER:-inventario_user}
+      POSTGRES_PASSWORD: ${DB_PASSWORD:-inventario_secret_password}
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+      - ./init.sql:/docker-entrypoint-initdb.d/init.sql:ro
+    networks:
+      - inventario-net
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${DB_USER:-inventario_user} -d ${DB_NAME:-inventario_db}"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+
+  app:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    container_name: inventario-app
+    restart: unless-stopped
+    environment:
+      DB_HOST: db
+      DB_PORT: 5432
+      DB_NAME: ${DB_NAME:-inventario_db}
+      DB_USER: ${DB_USER:-inventario_user}
+      DB_PASSWORD: ${DB_PASSWORD:-inventario_secret_password}
+      SPRING_PROFILES_ACTIVE: docker
+    depends_on:
+      db:
+        condition: service_healthy
+    networks:
+      - inventario-net
+
+  nginx:
+    build:
+      context: ./frontend/frontend
+      dockerfile: Dockerfile
+    container_name: inventario-nginx
+    restart: unless-stopped
+    ports:
+      - "${APP_HTTP_PORT:-80}:80"
+    depends_on:
+      - app
+    networks:
+      - inventario-net
+
+volumes:
+  postgres_data:
+    name: inventario_postgres_data
+
+networks:
+  inventario-net:
+    name: inventario_network
+    driver: bridge
