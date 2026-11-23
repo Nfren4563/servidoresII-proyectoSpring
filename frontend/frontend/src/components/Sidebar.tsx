@@ -80,7 +80,6 @@ export function Sidebar({ activeTab, onTabChange, conteos }: SidebarProps) {
         </div>
         <div className="brand-copy">
           <span className="brand-name">Wong Industries</span>
-          <span className="brand-badge">Sistema</span>
         </div>
       </div>
 
@@ -102,13 +101,6 @@ export function Sidebar({ activeTab, onTabChange, conteos }: SidebarProps) {
           );
         })}
       </nav>
-
-      <div className="sidebar-footer">
-        <div className="system-status">
-          <span className="status-indicator"></span>
-          <span className="status-label">Backend conectado</span>
-        </div>
-      </div>
     </aside>
   );
 }
