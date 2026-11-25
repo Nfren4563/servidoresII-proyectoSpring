@@ -2,8 +2,8 @@
 
 Aplicación web empresarial multi-contenedor para el control y la trazabilidad de inventarios y almacenes de **Wong Industries**, una compañía tecnológica.
 
-**Autor:** Efren Alejandro Gonzalez · [@Nfren4563](https://github.com/Nfren4563)
-Carlos Armando Santa Cruz Velarde
+**Autor:** Efren Alejandro Gonzalez · [@Nfren4563](https://github.com/Nfren4563) · 
+Carlos Armando Santa Cruz Velarde · 
 Diego Torres Salas
 
 ---
